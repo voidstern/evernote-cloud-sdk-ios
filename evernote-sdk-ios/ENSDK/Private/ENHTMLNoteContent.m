@@ -49,6 +49,12 @@
     //XXX: Doesn't handle resources (yet?)
     ENHTMLtoENMLConverter * converter = [[ENHTMLtoENMLConverter alloc] init];
     NSString * enml = [converter enmlFromHTMLContent:self.html];
-    return enml;
+    
+    NSMutableString *content = [NSMutableString new];
+    [content appendString:@"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>"];
+    [content appendString:@"<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">"];
+    [content appendString:enml];
+    
+    return [content copy];
 }
 @end

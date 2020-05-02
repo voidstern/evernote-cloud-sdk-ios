@@ -88,7 +88,6 @@ NSString * ENStoreClientDidFailWithAuthenticationErrorNotification = @"ENStoreCl
 
 // use id instead of NSObject* so block type-checking is happy
 - (void)invokeAsyncObjectBlock:(nullable id(^)())block completion:(void (^)(id _Nullable val, NSError *_Nullable error))completion
-
 {
     dispatch_async(self.queue, ^(void) {
         id retVal = nil;
