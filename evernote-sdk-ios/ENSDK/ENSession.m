@@ -1643,7 +1643,13 @@ static BOOL disableRefreshingNotebooksCacheOnLaunch;
     }
     
     NSString *viewNoteURLScheme = [NSString stringWithFormat:@"evernote:///view/%d/%@/%@/%@/", self.userID, [self shardIdForNoteRef:noteRef], noteRef.guid, noteRef.guid];
-    return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:viewNoteURLScheme]];
+    
+    NSURL *url = [NSURL URLWithString:viewNoteURLScheme];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+        return YES;
+    }
+    return NO;
 }
 
 - (BOOL)viewNoteInEvernote:(ENNoteRef *)noteRef callbackURL:(NSString *)callbackURL {
@@ -1652,7 +1658,12 @@ static BOOL disableRefreshingNotebooksCacheOnLaunch;
     }
     
     NSString *viewNoteURLScheme = [NSString stringWithFormat:@"evernote:///view/%d/%@/%@/%@/?callback=%@", self.userID, [self shardIdForNoteRef:noteRef], noteRef.guid, noteRef.guid, [callbackURL en_stringByUrlEncoding]];
-    return [[UIApplication sharedApplication] openURL:[NSURL URLWithString:viewNoteURLScheme]];
+    NSURL *url = [NSURL URLWithString:viewNoteURLScheme];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - Private routines
