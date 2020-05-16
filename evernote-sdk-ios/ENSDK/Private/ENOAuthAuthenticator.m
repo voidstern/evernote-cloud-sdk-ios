@@ -666,7 +666,7 @@ NSString * ENOAuthAuthenticatorAuthInfoAppNotebookIsLinked = @"ENOAuthAuthentica
     self.isActiveBecauseOfCallback = NO;
 }
 
-- (BOOL) canHandleSwitchProfileURL:(NSURL *)url {
+- (BOOL)canHandleSwitchProfileURL:(NSURL *)url {
     NSString *requestURL = [url path];
     NSArray *components = [requestURL componentsSeparatedByString:@"/"];
     if ([components count] < 2) {
@@ -677,8 +677,8 @@ NSString * ENOAuthAuthenticatorAuthInfoAppNotebookIsLinked = @"ENOAuthAuthentica
     return YES;
 }
 
-- (void)gotCallbackURL : (NSString*)callback {
-    NSURL* callbackURL = [NSURL URLWithString:callback];
+- (void)gotCallbackURL:(NSString*)callback {
+    NSURL* callbackURL = [NSURL URLWithString:callback ?: @""];
     if(callbackURL == nil) {
         [self completeAuthenticationWithError:[NSError errorWithDomain:ENErrorDomain code:ENErrorCodeCancelled userInfo:nil]];
         return;
