@@ -153,11 +153,6 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.authorizationURL]];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return YES;
-}
-
 # pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {

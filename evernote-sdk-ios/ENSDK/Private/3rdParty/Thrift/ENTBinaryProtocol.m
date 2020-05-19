@@ -337,7 +337,7 @@ int32_t VERSION_MASK = 0xffff0000;
 }
 
 - (void) writeDouble: (double) value {
-  // spit out IEEE 754 bits - FIXME - will this get us in trouble on
+  // spit out IEEE 754 bits - FIX - ME - will this get us in trouble on
   // PowerPC?
   [self writeI64: *((int64_t *) &value)];
 }
