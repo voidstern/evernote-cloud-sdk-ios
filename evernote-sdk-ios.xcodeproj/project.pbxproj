@@ -1441,10 +1441,9 @@
 			};
 			buildConfigurationList = 0BB3D1A71524ED96001C4534 /* Build configuration list for PBXProject "evernote-sdk-ios" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				"zh-cn",
 				Base,
